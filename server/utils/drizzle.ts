@@ -4,7 +4,7 @@ import postgres from "postgres";
 import { useEnv } from "~/server/utils/env";
 
 export const tables = schema;
-const client = postgres(useEnv.PROGRES_URL);
+const client = postgres(useEnv.POSTGRES_URL);
 
 export function useDrizzle() {
   return drizzle(client, { schema, casing: "snake_case" });
