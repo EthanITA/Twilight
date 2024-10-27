@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html * {
+    font-family: 'Nunito', 'Noto Sans', sans-serif;
+}
+
+:root {
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+    font-synthesis: none;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+html, #__nuxt, body {
+    @apply h-full w-full;
+}
