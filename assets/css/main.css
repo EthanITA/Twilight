@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwind.css";
 
 html * {
     font-family: 'Nunito', 'Noto Sans', sans-serif;
@@ -17,3 +15,4 @@ html * {
 html, #__nuxt, body {
     @apply h-full w-full;
 }
+
