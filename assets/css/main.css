@@ -1,4 +1,5 @@
 @import "tailwind.css";
+@import "tiptap.css";
 
 html * {
     font-family: 'Nunito', 'Noto Sans', sans-serif;
