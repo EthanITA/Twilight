@@ -89,5 +89,5 @@ export default {
   daisyui: {
     themes: [twilightTheme],
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("@tailwindcss/typography")],
 } as Config;

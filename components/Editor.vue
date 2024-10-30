@@ -7,7 +7,9 @@
 import StarterKit from "@tiptap/starter-kit";
 import { Editor, EditorContent } from "@tiptap/vue-3";
 
-const modelValue = defineModel<string>({ default: "" });
+const modelValue = defineModel<string>({
+  default: "<ul><li><p>asdasd</p></li></ul>",
+});
 const editor = new Editor({
   extensions: [StarterKit],
   content: modelValue.value,
@@ -20,5 +22,7 @@ watch(modelValue, (value) => {
   if (editor.getHTML() === value) return;
   editor.commands.setContent(value, false);
 });
+
+onMounted(editor.commands.focus);
 onUnmounted(editor.destroy);
 </script>

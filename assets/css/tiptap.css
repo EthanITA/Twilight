@@ -1,3 +1,13 @@
+.tiptap {
+    font-family: 'Nunito', 'Noto Sans', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 1.5rem;
+    @apply outline-none prose;
+}
+
 /* Basic editor styles */
 .tiptap > *:first-child {
     margin-top: 0;
@@ -54,17 +64,17 @@
 
 /* Code and preformatted text styles */
 .tiptap code {
-    background-color: var(--purple-light);
+    background-color: mediumpurple;
     border-radius: 0.4rem;
-    color: var(--black);
+    color: black;
     font-size: 0.85rem;
     padding: 0.25em 0.3em;
 }
 
 .tiptap pre {
-    background: var(--black);
+    background:black;
     border-radius: 0.5rem;
-    color: var(--white);
+    color: white;
     font-family: "JetBrainsMono", monospace;
     margin: 1.5rem 0;
     padding: 0.75rem 1rem;
@@ -78,13 +88,13 @@
 }
 
 .tiptap blockquote {
-    border-left: 3px solid var(--gray-3);
+    border-left: 3px solid darkgray;
     margin: 1.5rem 0;
     padding-left: 1rem;
 }
 
 .tiptap hr {
     border: none;
-    border-top: 1px solid var(--gray-2);
+    border-top: 1px solid dimgray;
     margin: 2rem 0;
 }
