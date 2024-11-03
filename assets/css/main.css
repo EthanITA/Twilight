@@ -1,5 +1,7 @@
 @import "tailwind.css";
 @import "tiptap.css";
+@import 'katex/dist/katex.min.css';
+
 
 html * {
     font-family: 'Nunito', 'Noto Sans', sans-serif;
@@ -14,6 +16,6 @@ html * {
 }
 
 html, #__nuxt, body {
-    @apply h-full w-full;
+    @apply size-full;
 }
 

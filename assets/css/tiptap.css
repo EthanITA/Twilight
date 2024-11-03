@@ -1,11 +1,13 @@
+.tiptap-title {
+    @apply text-4xl font-bold px-4 py-4;
+}
+
 .tiptap {
     font-family: 'Nunito', 'Noto Sans', sans-serif;
     font-size: 1.1rem;
     line-height: 1.6;
-    margin: 0 auto;
-    max-width: 800px;
-    padding: 1.5rem;
-    @apply outline-none prose;
+    min-width: 100%;
+    @apply outline-none prose size-full px-4 mx-4;
 }
 
 /* Basic editor styles */
@@ -24,6 +26,10 @@
 .tiptap ol li p {
     margin-bottom: 0.25em;
     margin-top: 0.25em;
+}
+
+.tiptap p {
+    @apply my-1;
 }
 
 /* Heading styles */
@@ -72,7 +78,7 @@
 }
 
 .tiptap pre {
-    background:black;
+    background: black;
     border-radius: 0.5rem;
     color: white;
     font-family: "JetBrainsMono", monospace;
@@ -87,10 +93,8 @@
     padding: 0;
 }
 
-.tiptap blockquote {
-    border-left: 3px solid darkgray;
-    margin: 1.5rem 0;
-    padding-left: 1rem;
+.tiptap blockquote > p:before, .tiptap blockquote > p:after {
+    content: '';
 }
 
 .tiptap hr {
@@ -98,3 +102,27 @@
     border-top: 1px solid dimgray;
     margin: 2rem 0;
 }
+
+.tiptap p.is-empty::before {
+    @apply text-gray-400;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+}
+
+.custom-drag-handle::after {
+    align-items: center;
+    background: #0D0D0D10;
+    border-radius: 0.25rem;
+    color: #0D0D0D50;
+    content: '⠿';
+    cursor: grab;
+    display: flex;
+    font-weight: 700;
+    height: 1.25rem;
+    justify-content: center;
+    width: 1rem;
+}
+
+

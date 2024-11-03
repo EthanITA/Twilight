@@ -1,28 +1,62 @@
 <template>
-  <h1 class="text-2xl">hello</h1>
-  <editor-content :editor="editor" class="bg-gray-200" />
+  <div class="editor bg-gray-200 flex flex-col overflow-y-auto">
+    <AtomsContent
+      ref="contentRef"
+      v-model="title"
+      class="tiptap-title"
+      placeholder="Title"
+      tag="h1"
+      @keydown.enter.prevent="editor.commands.focus()"
+    />
+    <editor-content :editor="editor" class="flex-1" />
+  </div>
 </template>
 
 <script lang="ts" setup>
 import StarterKit from "@tiptap/starter-kit";
 import { Editor, EditorContent } from "@tiptap/vue-3";
+import { Mathematics } from "@tiptap-pro/extension-mathematics";
+import { Placeholder } from "@tiptap/extension-placeholder";
+import { DragHandle } from "@tiptap-pro/extension-drag-handle";
 
-const modelValue = defineModel<string>({
-  default: "<ul><li><p>asdasd</p></li></ul>",
+const title = defineModel<string>("title", { default: "" });
+const content = defineModel<string>("content", { default: "" });
+
+const editor = ref();
+const contentRef = ref<HTMLElement | null>(null);
+
+watch(content, (value) => {
+  if (editor.value.getHTML() === value) return;
+  editor.value.commands.setContent(value, false);
 });
-const editor = new Editor({
-  extensions: [StarterKit],
-  content: modelValue.value,
-  onUpdate: () => {
-    modelValue.value = editor.getHTML();
-  },
+watch(title, () => {
+  // prevent new lines
+  title.value = title.value.replace(/&nbsp;/g, "").replace(/[\n\r]/g, " ");
 });
 
-watch(modelValue, (value) => {
-  if (editor.getHTML() === value) return;
-  editor.commands.setContent(value, false);
+onMounted(() => {
+  editor.value = new Editor({
+    extensions: [
+      StarterKit,
+      Mathematics,
+      Placeholder.configure({
+        placeholder: "Write something …",
+      }),
+      DragHandle.configure({
+        render() {
+          const element = document.createElement("div");
+          element.classList.add("custom-drag-handle");
+          return element;
+        },
+      }),
+    ],
+    content: content.value,
+    onUpdate: () => {
+      content.value = editor.value.getHTML();
+    },
+  });
 });
-
-onMounted(editor.commands.focus);
-onUnmounted(editor.destroy);
+onUnmounted(() => editor.value.destroy());
 </script>
+
+<style scoped></style>
