@@ -1,3 +1,7 @@
+@import "../lowlight.css";
+@import "list.css";
+@import "headings.css";
+
 .tiptap-title {
     @apply text-4xl font-bold px-4 py-4;
 }
@@ -15,57 +19,8 @@
     margin-top: 0;
 }
 
-/* List styles */
-.tiptap ul,
-.tiptap ol {
-    margin: 1.25rem 1rem 1.25rem 0.4rem;
-    padding: 0 1rem;
-}
-
-.tiptap ul li p,
-.tiptap ol li p {
-    margin-bottom: 0.25em;
-    margin-top: 0.25em;
-}
-
 .tiptap p {
     @apply my-1;
-}
-
-/* Heading styles */
-.tiptap h1,
-.tiptap h2,
-.tiptap h3,
-.tiptap h4,
-.tiptap h5,
-.tiptap h6 {
-    line-height: 1.1;
-    margin-top: 2.5rem;
-    text-wrap: pretty;
-}
-
-.tiptap h1,
-.tiptap h2 {
-    margin-bottom: 1.5rem;
-    margin-top: 3.5rem;
-}
-
-.tiptap h1 {
-    font-size: 1.4rem;
-}
-
-.tiptap h2 {
-    font-size: 1.2rem;
-}
-
-.tiptap h3 {
-    font-size: 1.1rem;
-}
-
-.tiptap h4,
-.tiptap h5,
-.tiptap h6 {
-    font-size: 1rem;
 }
 
 /* Code and preformatted text styles */
@@ -124,5 +79,3 @@
     justify-content: center;
     width: 1rem;
 }
-
-
