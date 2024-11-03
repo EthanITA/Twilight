@@ -1,9 +1,5 @@
 <template>
-  <Editor
-    v-model:content="note.data.content"
-    v-model:title="note.data.title"
-    class="size-full"
-  />
+  <Editor v-model:content="note.data.content" v-model:title="note.data.title" />
 </template>
 
 <script lang="ts" setup>

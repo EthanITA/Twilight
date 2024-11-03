@@ -7,11 +7,8 @@
 }
 
 .tiptap {
-    font-family: 'Nunito', 'Noto Sans', sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.6;
     min-width: 100%;
-    @apply outline-none prose size-full px-4 mx-4;
+    @apply outline-none prose size-full px-8 min-w-full;
 }
 
 /* Basic editor styles */

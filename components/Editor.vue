@@ -1,6 +1,6 @@
 <template>
-  <div class="editor bg-gray-200 flex flex-col overflow-y-auto">
-    <AtomsContent
+  <div class="size-full bg-gray-200 flex flex-col overflow-y-auto">
+    <atoms-content
       ref="contentRef"
       v-model="title"
       class="tiptap-title"
