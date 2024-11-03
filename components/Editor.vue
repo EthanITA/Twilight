@@ -44,7 +44,6 @@ import { BubbleMenu, Editor, EditorContent } from "@tiptap/vue-3";
 import { Mathematics } from "@tiptap-pro/extension-mathematics";
 import { Placeholder } from "@tiptap/extension-placeholder";
 import { DragHandle } from "@tiptap-pro/extension-drag-handle";
-import { ListKeymap } from "@tiptap/extension-list-keymap";
 import { TextAlign } from "@tiptap/extension-text-align";
 import { Highlight } from "@tiptap/extension-highlight";
 import { Superscript } from "@tiptap/extension-superscript";
@@ -97,7 +96,6 @@ onMounted(() => {
           return element;
         },
       }),
-      ListKeymap,
       TextAlign,
       Highlight,
       Superscript,
