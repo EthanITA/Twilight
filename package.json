@@ -12,6 +12,7 @@
     "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.1.5",
     "@nuxthub/core": "^0.8.2",
     "@pinia/nuxt": "^0.5.5",
     "@tiptap-pro/extension-details": "^2.13.0",
