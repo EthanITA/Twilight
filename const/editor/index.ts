@@ -75,7 +75,13 @@ export default new Editor({
     DragHandle.configure({
       render: () => {
         const element = document.createElement("div");
-        element.classList.add("custom-drag-handle");
+        const drag = document.createElement("div");
+        drag.classList.add("custom-drag-handle");
+        element.append(drag);
+        const addLine = document.createElement("div");
+        addLine.classList.add("custom-drag-handle");
+        element.append(addLine);
+        element.classList.add("flex", "gap-1");
         return element;
       },
     }),
