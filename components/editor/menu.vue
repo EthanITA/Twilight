@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { BubbleMenu, type Editor } from "@tiptap/vue-3";
+import { buttons } from "~/const/editor/menu";
 
 defineProps<{
   editor: Editor;
@@ -14,22 +15,12 @@ defineProps<{
   >
     <div class="bubble-menu">
       <button
-        :class="{ 'is-active': editor.isActive('bold') }"
-        @click="editor.chain().focus().toggleBold().run()"
+        v-for="button in buttons"
+        :key="button.label"
+        :data-active="button.isActive && editor.isActive(button.isActive)"
+        @click="button.command(editor.chain().focus()).run()"
       >
-        Bold
-      </button>
-      <button
-        :class="{ 'is-active': editor.isActive('italic') }"
-        @click="editor.chain().focus().toggleItalic().run()"
-      >
-        Italic
-      </button>
-      <button
-        :class="{ 'is-active': editor.isActive('strike') }"
-        @click="editor.chain().focus().toggleStrike().run()"
-      >
-        Strike
+        {{ button.label }}
       </button>
     </div>
   </bubble-menu>

@@ -52,6 +52,15 @@ export default new Editor({
     Strike,
     Text,
     Mathematics,
+    TextAlign,
+    Highlight,
+    Superscript,
+    Subscript,
+    Underline,
+    DetailsSummary,
+    DetailsContent,
+    TaskList,
+    TaskItem,
     Placeholder.configure({
       includeChildren: true,
       placeholder: ({ node }) => {
@@ -70,11 +79,6 @@ export default new Editor({
         return element;
       },
     }),
-    TextAlign,
-    Highlight,
-    Superscript,
-    Subscript,
-    Underline,
     CodeBlockLowlight.configure({
       lowlight: createLowlight(all),
     }),
@@ -84,9 +88,5 @@ export default new Editor({
         class: "details",
       },
     }),
-    DetailsSummary,
-    DetailsContent,
-    TaskList,
-    TaskItem,
   ],
 });

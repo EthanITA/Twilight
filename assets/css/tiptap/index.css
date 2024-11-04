@@ -1,6 +1,7 @@
 @import "../lowlight.css";
 @import "list.css";
 @import "headings.css";
+@import "menu.css";
 
 .tiptap-title {
     @apply text-4xl font-bold px-4 py-4;

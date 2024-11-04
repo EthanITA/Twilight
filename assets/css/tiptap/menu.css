@@ -1,0 +1,15 @@
+.bubble-menu {
+    @apply shadow bg-white/95 p-1 flex gap-1 rounded
+}
+
+.bubble-menu > button {
+    @apply btn btn-xs
+}
+
+.bubble-menu > button:not([data-active]) {
+    @apply btn-ghost
+}
+
+.bubble-menu > button[data-active="true"] {
+    @apply btn-primary
+}

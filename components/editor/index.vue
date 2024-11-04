@@ -14,7 +14,7 @@
 
 <script lang="ts" setup>
 import { Editor, EditorContent } from "@tiptap/vue-3";
-import tiptapEditor from "~/const/tiptapEditor";
+import tiptapEditor from "~/const/editor";
 
 const title = defineModel<string>("title", { default: "" });
 const content = defineModel<string>("content", { default: "" });
@@ -32,10 +32,9 @@ watch(
 );
 watch(
   title,
-  () => {
+  () =>
     // prevent new lines
-    title.value = title.value.replace(/&nbsp;/g, "").replace(/[\n\r]/g, " ");
-  },
+    (title.value = title.value.replace(/&nbsp;/g, "").replace(/[\n\r]/g, " ")),
   { immediate: true },
 );
 
