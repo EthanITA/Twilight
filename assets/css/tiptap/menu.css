@@ -11,7 +11,7 @@
 }
 
 .bubble-menu > button[data-active="false"] {
-    @apply bg-transparent
+    @apply btn-ghost
 }
 
 .bubble-menu > button[data-active="true"] {
