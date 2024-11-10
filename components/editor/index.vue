@@ -1,5 +1,5 @@
 <template>
-  <div class="size-full bg-gray-200 flex flex-col overflow-y-auto">
+  <div class="size-full bg-base-200 flex flex-col overflow-y-auto">
     <atoms-content
       v-model="title"
       class="tiptap-title"
