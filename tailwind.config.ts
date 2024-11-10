@@ -66,7 +66,7 @@ const twilightTheme = {
     "accent-content": "#fff",
     neutral: textColor.DEFAULT,
     "neutral-content": "#F4F6FC",
-    "base-100": "#F4F6FC",
+    "base-100": "#F9FAFB",
     "base-200": "#E5E7EB",
     "base-300": "#D1D5DB",
     "base-content": textColor.DEFAULT,
