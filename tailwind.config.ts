@@ -6,7 +6,7 @@ type Config = TailwindConfig & {
 };
 
 const textColor = {
-  DEFAULT: "rgb(75 85 99)",
+  DEFAULT: "#4B5563",
 };
 
 const primary = {
@@ -50,27 +50,27 @@ const tertiary = {
   "800": "#000bdb",
   "900": "#020ab0",
   "950": "#000d78",
-  DEFAULT: "#000bdb",
+  DEFAULT: "#3a4dff",
 };
 
 const twilightTheme = {
   twilight: {
     primary: primary.DEFAULT,
     "primary-focus": primary["600"],
-    "primary-content": "#fff",
+    "primary-content": "#FFE6E1",
     secondary: secondary.DEFAULT,
     "secondary-focus": secondary["600"],
-    "secondary-content": "#fff",
+    "secondary-content": "#F3EAFC",
     accent: tertiary.DEFAULT,
-    "accent-focus": tertiary["800"],
-    "accent-content": "#fff",
+    "accent-focus": tertiary["600"],
+    "accent-content": "#E4EAFF",
     neutral: textColor.DEFAULT,
-    "neutral-content": "#F4F6FC",
+    "neutral-content": "#E4E6EA",
     "base-100": "#F9FAFB",
-    "base-200": "#E5E7EB",
-    "base-300": "#D1D5DB",
-    "base-content": textColor.DEFAULT,
-    "base-content-focus": "#000",
+    "base-200": "#eceff2",
+    "base-300": "#d5dde2",
+    "base-content": "#333E47",
+    "base-content-focus": "#435362",
   },
 };
 
