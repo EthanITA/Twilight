@@ -50,7 +50,7 @@ const tertiary = {
   "800": "#0f00e4",
   "900": "#1200b0",
   "950": "#070036",
-  DEFAULT: "#070036",
+  DEFAULT: "#3e48ff",
 };
 
 const twilightTheme = {
@@ -61,6 +61,9 @@ const twilightTheme = {
     secondary: secondary.DEFAULT,
     "secondary-focus": secondary["600"],
     "secondary-content": "#fff",
+    accent: tertiary.DEFAULT,
+    "accent-focus": tertiary["600"],
+    "accent-content": "#fff",
     neutral: textColor.DEFAULT,
     "neutral-content": "#F4F6FC",
     "base-100": "#F4F6FC",
