@@ -11,8 +11,9 @@
 }
 
 .bubble-menu > button[data-active="false"] {
-    @apply btn-ghost
+    @apply btn-ghost hover:bg-primary-200 hover:border-primary-200 hover:text-[#812B1A]
 }
 
 .bubble-menu > button[data-active="true"] {
+    @apply bg-primary-300 border-primary-300 text-[#822C1A]
 }
