@@ -2,7 +2,7 @@ import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 
 const timestamps = {
   updatedAt: timestamp(),
-  createdAt: timestamp().defaultNow().notNull(),
+  createdAt: timestamp({ mode: "date" }).defaultNow().notNull(),
   deletedAt: timestamp(),
 };
 
@@ -12,3 +12,6 @@ export const note = pgTable("note", {
   content: text().default(""),
   ...timestamps,
 });
+
+export type Note = typeof note.$inferInsert;
+export type NoteInsert = typeof note.$inferSelect;
