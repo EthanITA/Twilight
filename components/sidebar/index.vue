@@ -9,7 +9,7 @@ const sidebar = useSidebar();
     class="sticky top-0 overflow-y-auto space-y-4 w-72 py-4 px-4 bg-base-100"
   >
     <!-- Logo -->
-    <div class="flex gap-2 items-center pointer-events-none">
+    <div class="flex gap-2 items-center pointer-events-none select-none">
       <img
         alt="Logo"
         class="size-8"
