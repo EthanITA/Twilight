@@ -19,7 +19,7 @@ import tiptapEditor from "~/const/editor";
 const title = defineModel<string>("title", { default: "" });
 const content = defineModel<string>("content", { default: "" });
 
-const editor = ref<Editor>(tiptapEditor);
+const editor = ref<Editor>(tiptapEditor());
 editor.value.on("update", () => (content.value = editor.value!.getHTML()));
 
 watch(
@@ -38,7 +38,10 @@ watch(
   { immediate: true },
 );
 
-onUnmounted(() => editor.value!.destroy());
+onUnmounted(() => {
+  console.log("destroying editor");
+  editor.value!.destroy();
+});
 </script>
 
 <style scoped></style>

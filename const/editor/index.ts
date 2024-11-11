@@ -32,67 +32,68 @@ import { TaskList } from "@tiptap/extension-task-list";
 import { TaskItem } from "@tiptap/extension-task-item";
 import { all, createLowlight } from "lowlight";
 
-export default new Editor({
-  extensions: [
-    Blockquote,
-    Bold,
-    BulletList,
-    Code,
-    Dropcursor,
-    Document,
-    Gapcursor,
-    HardBreak,
-    Heading,
-    History,
-    HorizontalRule,
-    Italic,
-    ListItem,
-    OrderedList,
-    Paragraph,
-    Strike,
-    Text,
-    Mathematics,
-    TextAlign,
-    Highlight,
-    Superscript,
-    Subscript,
-    Underline,
-    DetailsSummary,
-    DetailsContent,
-    TaskList,
-    TaskItem,
-    Placeholder.configure({
-      includeChildren: true,
-      placeholder: ({ node }) => {
-        if (node.type.name === "paragraph") {
-          return "Type something...";
-        } else if (node.type.name === "detailsSummary") {
-          return "Summary";
-        }
-        return "";
-      },
-    }),
-    DragHandle.configure({
-      render: () => {
-        const element = document.createElement("div");
-        const drag = document.createElement("div");
-        drag.classList.add("custom-drag-handle");
-        element.append(drag);
-        const addLine = document.createElement("div");
-        addLine.classList.add("custom-drag-handle");
-        element.append(addLine);
-        element.classList.add("flex", "gap-1");
-        return element;
-      },
-    }),
-    CodeBlockLowlight.configure({
-      lowlight: createLowlight(all),
-    }),
-    Details.configure({
-      persist: true,
-      HTMLAttributes: {
-        class: "details",
-      },
-    }),
-  ],
-});
+export default () =>
+  new Editor({
+    extensions: [
+      Blockquote,
+      Bold,
+      BulletList,
+      Code,
+      Dropcursor,
+      Document,
+      Gapcursor,
+      HardBreak,
+      Heading,
+      History,
+      HorizontalRule,
+      Italic,
+      ListItem,
+      OrderedList,
+      Paragraph,
+      Strike,
+      Text,
+      Mathematics,
+      TextAlign,
+      Highlight,
+      Superscript,
+      Subscript,
+      Underline,
+      DetailsSummary,
+      DetailsContent,
+      TaskList,
+      TaskItem,
+      Placeholder.configure({
+        includeChildren: true,
+        placeholder: ({ node }) => {
+          if (node.type.name === "paragraph") {
+            return "Type something...";
+          } else if (node.type.name === "detailsSummary") {
+            return "Summary";
+          }
+          return "";
+        },
+      }),
+      DragHandle.configure({
+        render: () => {
+          const element = document.createElement("div");
+          const drag = document.createElement("div");
+          drag.classList.add("custom-drag-handle");
+          element.append(drag);
+          const addLine = document.createElement("div");
+          addLine.classList.add("custom-drag-handle");
+          element.append(addLine);
+          element.classList.add("flex", "gap-1");
+          return element;
+        },
+      }),
+      CodeBlockLowlight.configure({
+        lowlight: createLowlight(all),
+      }),
+      Details.configure({
+        persist: true,
+        HTMLAttributes: {
+          class: "details",
+        },
+      }),
+    ],
+  });
