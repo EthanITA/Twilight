@@ -5,10 +5,6 @@ type Config = TailwindConfig & {
   daisyui: DaisyConfig;
 };
 
-const textColor = {
-  DEFAULT: "#4B5563",
-};
-
 const primary = {
   "50": "#fff3f1",
   "100": "#ffe6e1",
