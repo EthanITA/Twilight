@@ -6,6 +6,7 @@ import {
   RectangleGroupIcon,
   RectangleStackIcon,
 } from "@heroicons/vue/24/solid";
+import notes from "~/components/sidebar/notes.vue";
 
 export const appNames = [
   "Notes",
@@ -17,10 +18,11 @@ export const appNames = [
 ] as const;
 type AppName = (typeof appNames)[number];
 
-interface AppLink {
+export interface AppLink {
   name: AppName;
   link: string;
   icon: Component;
+  app?: Component;
 }
 
 export const apps: AppLink[] = [
@@ -28,6 +30,7 @@ export const apps: AppLink[] = [
     name: "Notes",
     link: "/notes",
     icon: BookOpenIcon,
+    app: notes,
   },
   {
     name: "Timeline",
