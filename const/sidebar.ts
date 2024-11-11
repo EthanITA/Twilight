@@ -50,11 +50,11 @@ export const apps: AppLink[] = [
   {
     name: "Calendar",
     link: "/calendar",
-    icon: CalendarIcon,
+    icon: CalendarDaysIcon,
   },
   {
     name: "Today",
     link: "/today",
-    icon: CalendarDaysIcon,
+    icon: CalendarIcon,
   },
 ];
