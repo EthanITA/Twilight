@@ -6,8 +6,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useNote } from "~/store/note";
-
 const note = useNote();
 note.get(1);
 

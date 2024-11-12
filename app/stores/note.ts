@@ -1,6 +1,6 @@
 import { useLocalStorage } from "@vueuse/core";
-import type { GetAllNotes } from "~/server/api/note/index.get";
-import type { GetNote } from "~/server/api/note/[id].get";
+import type { GetNote } from "~~/server/api/note/[id].get";
+import type { GetAllNotes } from "~~/server/api/note/index.get";
 
 export const useNote = defineStore("note", () => {
   const current = useLocalStorage<GetNote>("note", {

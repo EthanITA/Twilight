@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Note } from "~/server/database/schema";
+import { Note } from "~~/server/database/schema";
 
 const schema = z.object({
   id: z.number().optional(),

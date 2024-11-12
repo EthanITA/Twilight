@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { useSidebar } from "~/store/sidebar";
-
 const sidebar = useSidebar();
 </script>
 
@@ -21,7 +19,7 @@ const sidebar = useSidebar();
     <ul class="menu p-0">
       <li v-for="app in sidebar.apps">
         <NuxtLink
-          :class="{ active: sidebar.currentApp.name === app.name }"
+          :class="{ active: sidebar.currentApp?.name === app.name }"
           :to="app.link"
         >
           <component :is="app.icon" class="size-5" />
@@ -29,7 +27,7 @@ const sidebar = useSidebar();
         </NuxtLink>
       </li>
     </ul>
-    <template v-if="sidebar.currentApp.app">
+    <template v-if="sidebar.currentApp">
       <div class="divider" />
       <component :is="sidebar.currentApp.app" />
     </template>

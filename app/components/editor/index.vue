@@ -1,17 +1,3 @@
-<template>
-  <div class="size-full flex flex-col overflow-y-auto">
-    <atoms-content
-      v-model="title"
-      class="tiptap-title"
-      placeholder="Title"
-      tag="h1"
-      @keydown.enter.prevent="editor.commands.focus()"
-    />
-    <editor-content :editor="editor" class="flex-1" />
-    <editor-menu :editor="editor" />
-  </div>
-</template>
-
 <script lang="ts" setup>
 import { Editor, EditorContent } from "@tiptap/vue-3";
 import tiptapEditor from "~/const/editor";
@@ -43,5 +29,19 @@ onUnmounted(() => {
   editor.value!.destroy();
 });
 </script>
+
+<template>
+  <div class="size-full flex flex-col overflow-y-auto">
+    <atoms-content
+      v-model="title"
+      class="tiptap-title"
+      placeholder="Title"
+      tag="h1"
+      @keydown.enter.prevent="editor.commands.focus()"
+    />
+    <editor-content :editor="editor" class="flex-1" />
+    <editor-menu :editor="editor" />
+  </div>
+</template>
 
 <style scoped></style>
