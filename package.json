@@ -55,7 +55,7 @@
     "katex": "^0.16.11",
     "lodash": "^4.17.21",
     "lowlight": "^3.1.0",
-    "nuxt": "^3.13.2",
+    "nuxt": "^3.14.159",
     "postgres": "^3.4.5",
     "vue": "latest",
     "vue-router": "latest",
