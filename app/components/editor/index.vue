@@ -31,16 +31,19 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="size-full flex flex-col overflow-y-auto">
-    <atoms-content
-      v-model="title"
-      class="tiptap-title"
-      placeholder="Title"
-      tag="h1"
-      @keydown.enter.prevent="editor.commands.focus()"
-    />
-    <editor-content :editor="editor" class="flex-1" />
-    <editor-menu :editor="editor" />
+  <div class="size-full">
+    <div class="size-full flex flex-col overflow-y-auto">
+      <atoms-content
+        v-model="title"
+        class="tiptap-title"
+        placeholder="Title"
+        tag="h1"
+        @keydown.enter.prevent="editor.commands.focus()"
+      />
+      <editor-content :editor="editor" class="flex-1" />
+      <editor-menu :editor="editor" />
+    </div>
+    <div class="h-40" />
   </div>
 </template>
 

@@ -1,21 +1,15 @@
 <template>
+  {{ state }}
+  {{ data }}
   <Editor
     v-model:content="note.current.content"
     v-model:title="note.current.title"
+    class="pb-40 overflow-y-auto"
   />
 </template>
 
 <script lang="ts" setup>
 const note = useNote();
-note.get(1);
 
-/*const id = 1;
-const savePoll = setInterval(async () => {
-  await note.save(1);
-}, 5000);
-
-onUnmounted(async () => {
-  await note.save(1);
-  clearInterval(savePoll);
-});*/
+const { state, data, execute } = useApi().note.get(1);
 </script>
