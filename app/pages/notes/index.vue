@@ -1,5 +1,6 @@
 <template>
   {{ state }}
+  {{ status }}
   {{ data }}
   <Editor
     v-model:content="note.current.content"
@@ -10,6 +11,9 @@
 
 <script lang="ts" setup>
 const note = useNote();
-
-const { state, data, execute } = useApi().note.get(1);
+const api = useApi();
+const { state, status, data } = useQuery({
+  key: ["notes"],
+  query: () => api.note.getAll(),
+});
 </script>
