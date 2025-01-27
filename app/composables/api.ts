@@ -5,6 +5,8 @@ import {type WatchOptions, type WatchSource} from "vue";
 type Url = Parameters<typeof $fetch>[0];
 type Options = Parameters<typeof $fetch>[1];
 export const $api = <T>(url: Url, options?: Options) => {
+  const status = useStatus();
+
   return $fetch<T>(url, {
     onResponse: ({response}) => {
       if (response.status >= 400) {
@@ -15,6 +17,13 @@ export const $api = <T>(url: Url, options?: Options) => {
           color: "error",
           duration: 5000,
         });
+      }
+      status.unsetBgLoading();
+    },
+    onRequest: ({options}) => {
+      console.log(options.method)
+      if(["POST", "PUT", "DELETE"].includes(options.method??"")) {
+        status.setBgLoading();
       }
     },
     ...options,
