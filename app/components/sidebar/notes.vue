@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { PlusIcon } from "@heroicons/vue/24/solid";
+import {Plus} from "lucide-vue-next";
 </script>
 
 <template>
@@ -7,10 +7,10 @@ import { PlusIcon } from "@heroicons/vue/24/solid";
     <div class="flex justify-between items-center">
       <h2 class="font-bold">Notes</h2>
       <button
-        class="btn btn-primary btn-neutral btn-square btn-xs text-lg"
+        class="btn btn-primary btn-square btn-xs"
         title="Add project"
       >
-        <PlusIcon class="size-5" />
+        <Plus class="size-5" />
       </button>
     </div>
 

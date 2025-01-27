@@ -1,0 +1,60 @@
+@theme {
+  --font-*: initial;
+  --font-nunito: Nunito, sans-serif;
+  --color-primary-50: #fff3f1;
+  --color-primary-100: #ffe6e1;
+  --color-primary-200: #ffd0c7;
+  --color-primary-300: #ffb0a0;
+  --color-primary-400: #ff7053;
+  --color-primary-500: #f85b3b;
+  --color-primary-600: #e53f1d;
+  --color-primary-700: #c13114;
+  --color-primary-800: #a02c14;
+  --color-primary-900: #842a18;
+  --color-primary-950: #481207;
+  --color-primary: #ff7053;
+
+  --color-secondary-50: #faf6fe;
+  --color-secondary-100: #f2eafd;
+  --color-secondary-200: #e7d9fb;
+  --color-secondary-300: #d5bbf7;
+  --color-secondary-400: #ae7bed;
+  --color-secondary-500: #a165e7;
+  --color-secondary-600: #8a45d8;
+  --color-secondary-700: #7633bd;
+  --color-secondary-800: #642f9a;
+  --color-secondary-900: #53277c;
+  --color-secondary-950: #36105b;
+  --color-secondary: #ae7bed;
+
+  --color-tertiary-50: #f0f4ff;
+  --color-tertiary-100: #e4eaff;
+  --color-tertiary-200: #cdd9ff;
+  --color-tertiary-300: #a5b7ff;
+  --color-tertiary-400: #7287ff;
+  --color-tertiary-500: #3a4dff;
+  --color-tertiary-600: #121aff;
+  --color-tertiary-700: #010eff;
+  --color-tertiary-800: #000bdb;
+  --color-tertiary-900: #020ab0;
+  --color-tertiary-950: #000d78;
+  --color-tertiary: #3a4dff;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}

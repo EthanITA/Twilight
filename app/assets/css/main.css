@@ -1,10 +1,10 @@
-@import "tailwind.css";
-@import "tiptap/index.css";
+@import './tailwind.css';
+@import './tiptap/index.css';
 @import 'katex/dist/katex.min.css';
+@import "./lucide.css";
 
-
-html * {
-    font-family: 'Nunito', 'Noto Sans', sans-serif;
+html {
+    @apply font-nunito;
 }
 
 :root {

@@ -1,19 +1,17 @@
 <template>
-  {{ state }}
-  {{ status }}
-  {{ data }}
   <Editor
-    v-model:content="note.current.content"
-    v-model:title="note.current.title"
+    v-if="note"
+    v-model:content="note.content"
+    v-model:title="note.title"
     class="pb-40 overflow-y-auto"
   />
 </template>
 
 <script lang="ts" setup>
-const note = useNote();
-const api = useApi();
-const { state, status, data } = useQuery({
-  key: ["notes"],
-  query: () => api.note.getAll(),
-});
+const note = ref();
+
+const {status} = useApi(()=>api.note.get(1).then((res) => {
+  note.value = res;
+  console.log(res);
+}));
 </script>

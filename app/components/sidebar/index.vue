@@ -16,10 +16,11 @@ const sidebar = useSidebar();
       <h3 class="font-bold text-xl">Twilight</h3>
     </div>
     <!-- Links -->
-    <ul class="menu p-0">
+    <ul class="menu p-0 w-full">
       <li v-for="app in sidebar.apps">
         <NuxtLink
-          :class="{ active: sidebar.currentApp?.name === app.name }"
+          v-for="isSelected in [sidebar.currentApp?.name === app.name]"
+          :class="{ 'menu-active': isSelected }"
           :to="app.link"
         >
           <component :is="app.icon" class="size-5" />
@@ -34,4 +35,5 @@ const sidebar = useSidebar();
   </aside>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

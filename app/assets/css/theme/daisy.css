@@ -1,0 +1,31 @@
+@plugin "daisyui/theme"{
+  name: "twilight";
+  default: true; /* set as default */
+  prefersdark: false; /* set as default dark mode (prefers-color-scheme:dark) */
+  color-scheme: light; /* color of browser-provided UI */
+
+  --primary: var(--color-primary);
+  --color-primary-content: #FFE6E1;
+  --secondary: var(--color-secondary);
+  --secondary-focus: var(--color-secondary-600);
+  --secondary-content: #F3EAFC;
+  --accent: var(--color-tertiary);
+  --accent-focus: var(--color-tertiary-600);
+  --accent-content: #E4EAFF;
+  --neutral: var(--color-primary-200);
+  --neutral-content: #812B1A;
+  --base-100: #F9FAFB;
+  --base-200: #eceff2;
+  --base-300: #d5dde2;
+  --base-content: #333E47;
+  --base-content-focus: #435362;
+  --radius-field: var(--radius-md);
+}
+@plugin "daisyui" {
+  themes: "twilight";
+}
+
+.menu {
+  --menu-active-bg: var(--color-primary-200);
+  --color-base-content: var(--color-primary-300);
+}

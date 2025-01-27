@@ -1,11 +1,5 @@
-import {
-  BookOpenIcon,
-  CalendarDaysIcon,
-  CalendarIcon,
-  MapIcon,
-  RectangleGroupIcon,
-  RectangleStackIcon,
-} from "@heroicons/vue/24/solid";
+import {BookOpen, Calendar, CalendarDays, FileStack, Map, SquareStack} from "lucide-vue-next";
+
 import notes from "~/components/sidebar/notes.vue";
 
 export const appNames = [
@@ -29,32 +23,32 @@ export const apps: AppLink[] = [
   {
     name: "Notes",
     link: "/notes",
-    icon: BookOpenIcon,
+    icon: BookOpen,
     app: notes,
   },
   {
     name: "Timeline",
     link: "/timeline",
-    icon: MapIcon,
+    icon: Map,
   },
   {
     name: "Planner",
     link: "/planner",
-    icon: RectangleStackIcon,
+    icon: SquareStack,
   },
   {
     name: "Board",
     link: "/board",
-    icon: RectangleGroupIcon,
+    icon: FileStack,
   },
   {
     name: "Calendar",
     link: "/calendar",
-    icon: CalendarDaysIcon,
+    icon: CalendarDays,
   },
   {
     name: "Today",
     link: "/today",
-    icon: CalendarIcon,
+    icon: Calendar,
   },
 ];

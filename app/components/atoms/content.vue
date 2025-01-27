@@ -30,7 +30,7 @@ onMounted(updateContent);
     :is="tag ?? 'div'"
     ref="valueRef"
     :data-placeholder="placeholder"
-    class="!min-w-full text-4xl font-bold !outline-0 border-0"
+    class="min-w-full! text-4xl font-bold outline-0! border-0"
     contentEditable="true"
     @input="value = $event.target.innerText"
   />
@@ -39,6 +39,6 @@ onMounted(updateContent);
 <style scoped>
 [contentEditable="true"]:empty:not(:focus):before {
   content: attr(data-placeholder);
-  @apply text-gray-400 pointer-events-none;
+  @apply pointer-events-none;
 }
 </style>

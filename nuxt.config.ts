@@ -4,12 +4,6 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   css: ["~/assets/css/main.css"],
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
-  },
   app: {
     head: {
       link: [
@@ -25,6 +19,9 @@ export default defineNuxtConfig({
   },
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: ["@nuxthub/core", "@pinia/nuxt", "@pinia/colada-nuxt"],
+  modules: ["@nuxthub/core", "@pinia/nuxt", "@nuxt/ui"],
   ssr: false,
+  ui: {
+    colorMode: false
+  }
 });

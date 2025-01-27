@@ -1,7 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@import "./theme/base.css";
+@import "@nuxt/ui";
+@import "./theme/daisy.css";
 
-.menu li > *:hover {
-    --bc: var(--p); /* primary.DEFAULT */
-}
+@plugin '@tailwindcss/typography';
