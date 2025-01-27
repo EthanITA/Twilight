@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { eq } from "drizzle-orm";
+import {z} from "zod";
+import {eq} from "drizzle-orm";
 
 const schema = z
   .object({
@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
   const { id } = await getValidatedRouterParams(
     event,
     z.object({
-      id: z.number(),
+      id: z.coerce.number(),
     }).parse,
   );
   const body = (await readValidatedBody(event, schema.parse)) ?? {};
@@ -26,6 +26,4 @@ export default defineEventHandler(async (event) => {
       updatedAt: new Date(),
     })
     .where(eq(tables.note.id, id));
-
-  setResponseStatus(event, 200);
 });

@@ -36,7 +36,7 @@ interface UseApiOptions extends WatchOptions {
 }
 
 export function useApi<T, A extends unknown[] = [], E = unknown>(
-  fn: (...args: A) => Promise<T>,
+  fn: (...args: A) => Promise<T> | T,
   opts: UseApiOptions = {},
 ) {
   const status = ref<AsyncDataRequestStatus>("idle");
@@ -139,8 +139,8 @@ export function useApi<T, A extends unknown[] = [], E = unknown>(
 }
 
 export function useAction<T, A extends unknown[] = [], E = unknown>(
-  fn: (...args: A) => Promise<T>,
-  opts: UseApiOptions,
+  fn: (...args: A) => Promise<T> | T,
+  opts?: UseApiOptions,
 ) {
   return useApi<T, A, E>(fn, {...opts, immediate: false});
 }
