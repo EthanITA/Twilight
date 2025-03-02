@@ -3,9 +3,7 @@ const sidebar = useSidebar();
 </script>
 
 <template>
-  <aside
-    class="sticky top-0 overflow-y-auto space-y-4 w-72 py-4 px-4 bg-base-100"
-  >
+  <aside class="overflow-y-auto border-r space-y-4 w-72 py-4 px-4 bg-base-100">
     <!-- Logo -->
     <div class="flex gap-2 items-center pointer-events-none select-none">
       <img
@@ -35,5 +33,4 @@ const sidebar = useSidebar();
   </aside>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

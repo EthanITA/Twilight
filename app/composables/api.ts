@@ -1,13 +1,19 @@
 import note from "~/composables/api/note";
 import type {AsyncDataRequestStatus} from "#app";
 import {type WatchOptions, type WatchSource} from "vue";
+import type {InternalApi} from "nitropack";
+
 
 type Url = Parameters<typeof $fetch>[0];
 type Options = Parameters<typeof $fetch>[1];
-export const $api = <T>(url: Url, options?: Options) => {
-  const status = useStatus();
 
-  return $fetch<T>(url, {
+export type ApiRoutes = keyof InternalApi
+
+export type ApiResponse<T extends ApiRoutes, M extends keyof InternalApi[T]> = InternalApi[T][M]
+
+export const $api = <A extends ApiRoutes, M extends keyof InternalApi[A]>(url: A, options?: Options & { method?: M}) => {
+  const status = useStatus();
+  return $fetch<ApiResponse<A, M>>(url, {
     onResponse: ({response}) => {
       if (response.status >= 400) {
         useToast().add({
@@ -27,7 +33,7 @@ export const $api = <T>(url: Url, options?: Options) => {
       }
     },
     ...options,
-  });
+  })
 };
 
 interface CacheEntry<T> {

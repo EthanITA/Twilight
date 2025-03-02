@@ -31,8 +31,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="size-full">
-    <div class="size-full flex flex-col overflow-y-auto">
+  <div>
+    <div class="flex flex-col overflow-y-auto">
       <atoms-content
         v-model="title"
         class="tiptap-title"
