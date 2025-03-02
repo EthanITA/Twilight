@@ -3,7 +3,7 @@
     v-if="note"
     v-model:content="note.content"
     v-model:title="note.title"
-    class="overflow-y-auto"
+    class="overflow-y-auto size-full bg-gray-50"
   />
 </template>
 

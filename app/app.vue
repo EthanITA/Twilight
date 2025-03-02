@@ -3,7 +3,7 @@
 <template>
   <UApp>
     <NuxtLayout>
-      <main class="bg-base-200">
+      <main class="bg-base-200 size-full">
         <NuxtPage />
       </main>
     </NuxtLayout>
