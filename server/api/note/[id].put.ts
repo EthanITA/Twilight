@@ -1,10 +1,12 @@
-import {z} from "zod";
-import {eq} from "drizzle-orm";
+import { z } from "zod";
+import { eq } from "drizzle-orm";
+import { useAI } from "~~/server/utils/ai";
 
 const schema = z
   .object({
     title: z.string().optional(),
     content: z.string().optional(),
+    hint: z.boolean().optional(),
   })
   .optional();
 
@@ -26,4 +28,17 @@ export default defineEventHandler(async (event) => {
       updatedAt: new Date(),
     })
     .where(eq(tables.note.id, id));
+
+  if (body.content && body.hint)
+    return useAI()
+      .complete(body.content)
+      .then((res) => {
+        console.log(res);
+        return res;
+      })
+      .catch((reason) => {
+        console.log(reason);
+        return "";
+      });
+  return "";
 });

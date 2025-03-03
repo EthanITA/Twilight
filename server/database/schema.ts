@@ -8,8 +8,8 @@ const timestamps = {
 
 export const note = pgTable("note", {
   id: serial().primaryKey(),
-  title: text().default("Untitled"),
-  content: text().default(""),
+  title: text().default("Untitled").notNull(),
+  content: text().default("").notNull(),
   ...timestamps,
 });
 

@@ -28,6 +28,20 @@ onUnmounted(() => {
   console.log("destroying editor");
   editor.value!.destroy();
 });
+
+defineExpose({
+  setHint: (hint: string) => {
+    // @ts-expect-error
+    editor.value!.commands.setHint(hint);
+  },
+  clearHint: () => {
+    // @ts-expect-error
+    editor.value!.commands.clearHint();
+  },
+  addText: (text: string) => {
+    editor.value.chain().focus().insertContent(text).run();
+  },
+});
 </script>
 
 <template>
@@ -47,4 +61,4 @@ onUnmounted(() => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped />

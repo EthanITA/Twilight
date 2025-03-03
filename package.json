@@ -12,6 +12,9 @@
     "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
+    "@langchain/core": "^0.3.42",
+    "@langchain/langgraph": "^0.2.51",
+    "@langchain/openai": "^0.4.4",
     "@neondatabase/serverless": "^0.10.4",
     "@nuxt/ui": "3.0.0-beta.2",
     "@nuxthub/core": "^0.8.17",
@@ -21,6 +24,7 @@
     "@tiptap-pro/extension-details-summary": "^2.17.5",
     "@tiptap-pro/extension-drag-handle": "^2.17.5",
     "@tiptap-pro/extension-mathematics": "^2.17.5",
+    "@tiptap/core": "^2.11.5",
     "@tiptap/extension-blockquote": "^2.11.5",
     "@tiptap/extension-bold": "^2.11.5",
     "@tiptap/extension-bubble-menu": "^2.11.5",
@@ -58,6 +62,7 @@
     "lowlight": "^3.3.0",
     "lucide-vue-next": "^0.477.0",
     "nuxt": "^3.15.4",
+    "pinia": "^3.0.1",
     "postgres": "^3.4.5",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
