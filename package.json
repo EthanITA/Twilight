@@ -72,6 +72,7 @@
   "devDependencies": {
     "@tailwindcss/language-server": "^0.14.8",
     "@tailwindcss/typography": "^0.5.16",
+    "crossws": "^0.3.4",
     "daisyui": "5.0.0",
     "drizzle-kit": "^0.30.5",
     "postcss": "^8.5.3",

@@ -29,6 +29,7 @@ export default defineEventHandler(async (event) => {
     })
     .where(eq(tables.note.id, id));
 
+  return "";
   if (body.content && body.hint)
     return useAI()
       .complete(body.content)

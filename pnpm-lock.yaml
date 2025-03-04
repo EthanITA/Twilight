@@ -180,6 +180,9 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.16(tailwindcss@4.0.9)
+      crossws:
+        specifier: ^0.3.4
+        version: 0.3.4
       daisyui:
         specifier: 5.0.0
         version: 5.0.0

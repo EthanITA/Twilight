@@ -22,6 +22,7 @@ export default defineNuxtConfig({
   modules: ["@nuxthub/core", "@pinia/nuxt", "@nuxt/ui"],
   ssr: false,
   ui: {
-    colorMode: false
-  }
+    colorMode: false,
+  },
+  nitro: { experimental: { websocket: true } },
 });
