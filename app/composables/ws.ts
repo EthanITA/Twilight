@@ -1,12 +1,4 @@
-import type { InternalApi } from "nitropack";
 import { z } from "zod";
-
-export type ApiRoutes = keyof InternalApi;
-
-export type ApiResponse<
-  T extends ApiRoutes,
-  M extends keyof InternalApi[T],
-> = InternalApi[T][M];
 
 export const $ws = <A extends ApiRoutes>(url: A) => new WebSocket(url);
 export const useWs = <
@@ -23,10 +15,10 @@ export const useWs = <
     "pending",
   );
   const data = ref<Record<T["type"], T>>();
-  wsInstance.onopen = () => (status.value = "connected");
-  wsInstance.onclose = () => (status.value = "disconnected");
-  wsInstance.onerror = () => (status.value = "closed");
-  wsInstance.onmessage = (ev) => {
+  wsInstance.addEventListener("open", () => (status.value = "connected"));
+  wsInstance.addEventListener("close", () => (status.value = "disconnected"));
+  wsInstance.addEventListener("error", () => (status.value = "closed"));
+  wsInstance.addEventListener("message", (ev) => {
     const result = schema.safeParse(JSON.parse(ev.data));
     if (!result.success) {
       console.error(result.error);
@@ -34,7 +26,7 @@ export const useWs = <
     }
     const { type, data } = result.data;
     data.value = { ...data.value, [type]: data };
-  };
+  });
   return {
     status: computed(() => status.value),
     isConnected: computed(() => status.value === "connected"),

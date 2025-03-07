@@ -2,10 +2,12 @@ import { z } from "zod";
 
 const TOPIC = {
   HINT: "hint",
+  ABORT_HINT: "abort_hint",
   MESSAGE: "message",
 } as const;
 
 const hintSchema = z.object({ topic: z.literal(TOPIC.HINT), data: z.string() });
+const abortHintSchema = z.object({ topic: z.literal(TOPIC.ABORT_HINT) });
 const messageSchema = z.object({
   topic: z.literal(TOPIC.MESSAGE),
   data: z.object({ title: z.string(), content: z.string().default("") }),
@@ -13,6 +15,7 @@ const messageSchema = z.object({
 const schema = {
   hint: hintSchema,
   message: messageSchema,
+  abort_hint: abortHintSchema,
   either: z.union([hintSchema, messageSchema]),
 };
 
