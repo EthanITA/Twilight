@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { eq } from "drizzle-orm";
-import { useAI } from "~~/server/utils/ai";
 
 const schema = z
   .object({
@@ -28,18 +27,4 @@ export default defineEventHandler(async (event) => {
       updatedAt: new Date(),
     })
     .where(eq(tables.note.id, id));
-
-  return "";
-  if (body.content && body.hint)
-    return useAI()
-      .complete(body.content)
-      .then((res) => {
-        console.log(res);
-        return res;
-      })
-      .catch((reason) => {
-        console.log(reason);
-        return "";
-      });
-  return "";
 });

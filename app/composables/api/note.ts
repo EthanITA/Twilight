@@ -1,8 +1,6 @@
 import type { PutNoteBody } from "~~/server/api/note/[id].put";
 import type { PostNoteBody } from "~~/server/api/note/index.post";
-import type { ApiRoutes } from "~/composables/api";
 
-const a: ApiRoutes = "/api/note/:id";
 export default {
   getAll: () => $api("/api/note"),
   get: (id: number) =>

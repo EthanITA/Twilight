@@ -7,11 +7,11 @@ const timestamps = {
 };
 
 export const note = pgTable("note", {
-  id: serial().primaryKey(),
+  id: serial().primaryKey().notNull(),
   title: text().default("Untitled").notNull(),
   content: text().default("").notNull(),
   ...timestamps,
 });
 
 export type Note = typeof note.$inferInsert;
-export type NoteInsert = typeof note.$inferSelect;
+export type NoteInsert = Pick<Note, "content" | "title">;

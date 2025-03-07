@@ -8,7 +8,7 @@ const TOPIC = {
 const hintSchema = z.object({ topic: z.literal(TOPIC.HINT), data: z.string() });
 const messageSchema = z.object({
   topic: z.literal(TOPIC.MESSAGE),
-  data: z.string(),
+  data: z.object({ title: z.string(), content: z.string().default("") }),
 });
 const schema = {
   hint: hintSchema,
