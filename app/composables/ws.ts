@@ -1,31 +1,27 @@
-import { z } from "zod";
+import note from "./ws/note";
 
 export const $ws = <A extends ApiRoutes>(url: A) => new WebSocket(url);
-export const useWs = <
-  T extends {
-    type: string;
-    data: Record<any, any>;
-  },
->(
-  ws: () => WebSocket,
-  schema: z.ZodObject<{ type: z.ZodString; data: z.ZodRecord<z.ZodAny> }>,
-) => {
-  const wsInstance = ws();
+
+type WsMessage = { type: string; data: Record<string, unknown> };
+
+export const useDefineWs = (ws: () => WebSocket) => ws();
+export const useWs = (websocket: () => WebSocket) => {
+  const ws = websocket();
+  type WsType = WsMessage["type"];
+  type WsData = WsMessage["data"];
+
   const status = ref<"pending" | "connected" | "disconnected" | "closed">(
     "pending",
   );
-  const data = ref<Record<T["type"], T>>();
-  wsInstance.addEventListener("open", () => (status.value = "connected"));
-  wsInstance.addEventListener("close", () => (status.value = "disconnected"));
-  wsInstance.addEventListener("error", () => (status.value = "closed"));
-  wsInstance.addEventListener("message", (ev) => {
-    const result = schema.safeParse(JSON.parse(ev.data));
-    if (!result.success) {
-      console.error(result.error);
-      return;
-    }
-    const { type, data } = result.data;
-    data.value = { ...data.value, [type]: data };
+  const data = ref<Record<WsType, WsData> | {}>({});
+
+  ws.addEventListener("open", () => (status.value = "connected"));
+  ws.addEventListener("close", () => (status.value = "disconnected"));
+  ws.addEventListener("error", () => (status.value = "closed"));
+  ws.addEventListener("message", (ev) => {
+    const result = JSON.parse(ev.data) as WsMessage;
+    const { type, data } = result;
+    data.value = { ...(data.value as Object), [type]: data };
   });
   return {
     status: computed(() => status.value),
@@ -34,6 +30,8 @@ export const useWs = <
     isClosed: computed(() => status.value === "closed"),
     isPending: computed(() => status.value === "pending"),
     data,
-    send: (data: Record<any, any>) => wsInstance.send(JSON.stringify(data)),
+    send: (data: Record<any, any>) => ws.send(JSON.stringify(data)),
   };
 };
+
+export default { note };

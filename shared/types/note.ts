@@ -7,7 +7,10 @@ const TOPIC = {
 } as const;
 
 const hintSchema = z.object({ topic: z.literal(TOPIC.HINT), data: z.string() });
-const abortHintSchema = z.object({ topic: z.literal(TOPIC.ABORT_HINT) });
+const abortHintSchema = z.object({
+  topic: z.literal(TOPIC.ABORT_HINT),
+  data: z.undefined(),
+});
 const messageSchema = z.object({
   topic: z.literal(TOPIC.MESSAGE),
   data: z.object({ title: z.string(), content: z.string().default("") }),
@@ -16,7 +19,7 @@ const schema = {
   hint: hintSchema,
   message: messageSchema,
   abort_hint: abortHintSchema,
-  either: z.union([hintSchema, messageSchema]),
+  either: z.union([hintSchema, messageSchema, abortHintSchema]),
 };
 
 export const NOTE = {

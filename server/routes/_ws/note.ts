@@ -25,7 +25,6 @@ const handlers: Handlers = {
   ) => {
     // @ts-ignore
     peer.context.saveMessage(data);
-    peer.send({ topic: NOTE.TOPIC.MESSAGE, data: "OK" });
   },
 };
 
