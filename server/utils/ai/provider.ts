@@ -5,7 +5,6 @@ export const openai = (config: {
   temperature: number;
   max_tokens: number;
 }) => {
-  console.log("openai", useEnv().OPENAI_API_KEY);
   return new ChatOpenAI({
     apiKey: useEnv().OPENAI_API_KEY,
     model: config.model,

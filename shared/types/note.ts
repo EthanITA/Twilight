@@ -9,7 +9,7 @@ const TOPIC = {
 const hintSchema = z.object({ topic: z.literal(TOPIC.HINT), data: z.string() });
 const abortHintSchema = z.object({
   topic: z.literal(TOPIC.ABORT_HINT),
-  data: z.undefined(),
+  data: z.string(),
 });
 const messageSchema = z.object({
   topic: z.literal(TOPIC.MESSAGE),

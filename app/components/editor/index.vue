@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { Editor, EditorContent } from "@tiptap/vue-3";
 import tiptapEditor from "~/const/editor";
+import { getExtensions } from "~/const/editor/extensions";
 
 const title = defineModel<string>("title", { default: "" });
 const content = defineModel<string>("content", { default: "" });
@@ -25,22 +26,18 @@ watch(
 );
 
 onUnmounted(() => {
-  console.log("destroying editor");
+  editor.value.storage.suggestion;
   editor.value!.destroy();
 });
 
 defineExpose({
-  setHint: (hint: string) => {
-    // @ts-expect-error
-    editor.value!.commands.setHint(hint);
-  },
-  clearHint: () => {
-    // @ts-expect-error
-    editor.value!.commands.clearHint();
-  },
-  addText: (text: string) => {
-    editor.value.chain().focus().insertContent(text).run();
-  },
+  setHint: (hint: string) => editor.value!.commands.setSuggestion(hint),
+  getHint: () => getExtensions(editor.value as Editor, "suggestion"),
+  clearHint: () => editor.value!.commands.clearSuggestion(),
+  applyHint: () => editor.value!.commands.applySuggestion(),
+  addText: (text: string) =>
+    editor.value.chain().focus().insertContent(text).run(),
+  getText: () => editor.value!.getText(),
 });
 </script>
 

@@ -5,8 +5,7 @@
     v-model:content="note.content"
     v-model:title="note.title"
     class="overflow-y-auto size-full bg-gray-50"
-    @click="$refs.editor?.clearHint()"
-    @keydown="$refs.editor?.clearHint()"
+    name="editor"
   />
 </template>
 
@@ -19,6 +18,7 @@ const note = ref<NonNullable<Awaited<ReturnType<typeof api.note.get>>>>({
   title: "",
   content: "",
 });
+const abortController = ref(new AbortController());
 
 watch(
   note,
@@ -36,14 +36,48 @@ const { isSuccess } = useApi(() =>
     note.value = res;
   }),
 );
-
-const cache: Record<string, string> = {};
+const getHint = debounce(async () => {
+  const text = editor.value?.getText();
+  if (!text) return;
+  const lastChar = text.slice(-1);
+  const lastTwoChars = text.slice(-2);
+  if (lastTwoChars === "  " || lastChar !== " ") return;
+  if (lastChar === " " && lastTwoChars !== "  ") {
+    abortController.value.abort();
+    abortController.value = new AbortController();
+    noteWs.send({ topic: NOTE.TOPIC.ABORT_HINT, data: text });
+    noteWs.send({ topic: NOTE.TOPIC.HINT, data: text });
+    await noteWs
+      .waitMessage<string>(NOTE.TOPIC.HINT, {
+        signal: abortController.value.signal,
+      })
+      .then((res) => {
+        console.log("Hint received", res);
+        return res && editor.value?.setHint(res);
+      })
+      .catch(() => {
+        console.log("Hint request aborted");
+      });
+  }
+}, 500);
 
 defineShortcuts(
   {
     tab: {
       usingInput: true,
-      handler: () => editor.value?.addText(cache[note.value.content] ?? ""),
+      handler: () => {
+        const hint = editor.value?.getHint();
+        const text = editor.value?.getText();
+        if (!hint || !text) return;
+        editor.value?.applyHint();
+      },
+    },
+    " ": {
+      usingInput: true,
+      handler: () => {
+        editor.value?.addText(" ");
+        getHint();
+      },
     },
   },
   {},

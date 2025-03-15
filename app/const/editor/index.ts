@@ -1,4 +1,4 @@
-import { Editor, Extension, type RawCommands } from "@tiptap/vue-3";
+import { Editor } from "@tiptap/vue-3";
 import { Blockquote } from "@tiptap/extension-blockquote";
 import { Bold } from "@tiptap/extension-bold";
 import { BulletList } from "@tiptap/extension-bullet-list";
@@ -31,80 +31,8 @@ import { DetailsContent } from "@tiptap-pro/extension-details-content";
 import { TaskList } from "@tiptap/extension-task-list";
 import { TaskItem } from "@tiptap/extension-task-item";
 import { all, createLowlight } from "lowlight";
-import { Plugin, PluginKey } from "@tiptap/pm/state";
-import { Decoration, DecorationSet } from "@tiptap/pm/view";
+import { AutocompleteExtension } from "~/const/editor/extensions/autocomplete";
 
-// InlineHint extension to display a ghosted hint after the cursor.
-const pluginKey = new PluginKey("inlineHint");
-
-const InlineHint = Extension.create({
-  name: "inlineHint",
-
-  addCommands() {
-    return {
-      setHint:
-        (hint: string) =>
-        ({ tr, dispatch }: any) => {
-          tr.setMeta(pluginKey, { hint });
-          if (dispatch) {
-            dispatch(tr);
-          }
-          return true;
-        },
-      clearHint:
-        () =>
-        ({ tr, dispatch }: any) => {
-          tr.setMeta(pluginKey, { hint: null });
-          if (dispatch) {
-            dispatch(tr);
-          }
-          return true;
-        },
-    } as Partial<RawCommands>;
-  },
-
-  addProseMirrorPlugins() {
-    return [
-      new Plugin({
-        key: pluginKey,
-        state: {
-          init() {
-            return { hint: null, decorations: DecorationSet.empty };
-          },
-          apply(tr, pluginState, oldState, newState) {
-            const meta = tr.getMeta(pluginKey);
-            let { hint } = pluginState;
-            if (meta !== undefined) {
-              hint = meta.hint;
-            }
-            let decorations = DecorationSet.empty;
-            if (hint) {
-              // Always use the current cursor position from newState.selection.from
-              const pos = newState.selection.from;
-              const deco = Decoration.widget(
-                pos,
-                () => {
-                  const span = document.createElement("span");
-                  span.textContent = hint;
-                  span.className = "inline-hint text-gray-400";
-                  return span;
-                },
-                { side: 1 },
-              );
-              decorations = DecorationSet.create(newState.doc, [deco]);
-            }
-            return { hint, decorations };
-          },
-        },
-        props: {
-          decorations(state) {
-            return pluginKey.getState(state).decorations;
-          },
-        },
-      }),
-    ];
-  },
-});
 export default () =>
   new Editor({
     extensions: [
@@ -137,7 +65,7 @@ export default () =>
       TaskItem,
       Placeholder.configure({
         includeChildren: true,
-        placeholder: ({ node }) => {
+        placeholder: ({ node }: any) => {
           if (node.type.name === "paragraph") {
             return "Type something...";
           } else if (node.type.name === "detailsSummary") {
@@ -168,6 +96,6 @@ export default () =>
           class: "details",
         },
       }),
-      InlineHint,
+      AutocompleteExtension,
     ],
   });
