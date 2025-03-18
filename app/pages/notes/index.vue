@@ -19,16 +19,22 @@ const note = ref<NonNullable<Awaited<ReturnType<typeof api.note.get>>>>({
   content: "",
 });
 const abortController = ref(new AbortController());
-
+const saveNote = debounce(
+  () => {
+    noteWs.send({ topic: "message", data: note.value });
+  },
+  1500,
+  { maxWait: 5000 },
+);
+const editor = ref<InstanceType<typeof Editor>>();
 watch(
   note,
-  debounce(() => noteWs.send({ topic: "message", data: note.value }), 1500, {
-    maxWait: 5000,
-  }),
+  () => {
+    editor.value?.clearHint();
+    saveNote();
+  },
   { deep: true },
 );
-
-const editor = ref<InstanceType<typeof Editor>>();
 
 const { isSuccess } = useApi(() =>
   api.note.get(1).then((res) => {
@@ -75,8 +81,8 @@ defineShortcuts(
     " ": {
       usingInput: true,
       handler: () => {
-        editor.value?.addText(" ");
         getHint();
+        editor.value?.addText(" ");
       },
     },
   },

@@ -43,14 +43,12 @@ export const AutocompleteExtension = Node.create<
 
           const selection = state.selection;
           const cursorPos = selection.$head.pos;
-          const nextNode = state.doc.nodeAt(cursorPos);
 
           const suggestionDecoration = Decoration.widget(
             cursorPos,
             () => {
               const parentNode = document.createElement("span");
-              const addSpace = nextNode && nextNode.isText ? " " : "";
-              parentNode.innerHTML = `${addSpace}${suggestion}`;
+              parentNode.innerHTML = suggestion;
               parentNode.classList.add("autocomplete-suggestion");
               return parentNode;
             },

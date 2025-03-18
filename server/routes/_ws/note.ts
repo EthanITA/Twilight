@@ -3,6 +3,7 @@ import { debounce } from "es-toolkit";
 import { Note } from "~~/server/database/schema";
 import { z } from "zod";
 
+const cacheHint = new Map<string, string>();
 interface NoteContext {
   controllers: { [key: string]: AbortController };
   createController: (k: string) => AbortController;
@@ -10,7 +11,6 @@ interface NoteContext {
   saveNote: ((note: Pick<Note, "content" | "title">) => Promise<any>) & {
     flush: () => void;
   };
-
   [key: string]: any;
 }
 
@@ -33,9 +33,12 @@ type Handlers = Record<
 
 const handlers: Handlers = {
   [NOTE.TOPIC.HINT]: async (peer, data: string) => {
+    if (cacheHint.has(data)) {
+      return peer.send({ topic: NOTE.TOPIC.HINT, data: cacheHint.get(data) });
+    }
     const controller = peer.context.createController(data);
     const hint = await useAI(controller.signal).complete(data);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    cacheHint.set(data, hint);
     if (controller.signal.aborted) return;
     peer.send({ topic: NOTE.TOPIC.HINT, data: hint });
   },
