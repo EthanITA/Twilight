@@ -48,13 +48,15 @@ const handlers: Handlers = {
   [NOTE.TOPIC.MESSAGE]: async (
     peer,
     data: z.infer<typeof NOTE.schema.message>["data"],
-  ) => peer.context.saveNote(data),
+  ) => {
+    peer.context.saveNote(data);
+    peer.send({ topic: NOTE.TOPIC.MESSAGE, data: "OK" });
+  },
 };
 
-const saveNote = debounce((note: Pick<Note, "content" | "title">) => {
+const saveNote = (note: Pick<Note, "content" | "title">) => {
   return dbMethods.useNote().save(1, note);
-}, 10000);
-
+};
 export default defineWebSocketHandler({
   async open(peer) {
     peer.context[peer.id] = { user: "server" };

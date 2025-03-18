@@ -10,12 +10,5 @@ export type GetAllNotes = Pick<
 >[];
 
 export default defineEventHandler(async (event) => {
-  return db
-    .select({
-      id: tables.note.id,
-      title: tables.note.title,
-      updatedAt: tables.note.updatedAt,
-      createdAt: tables.note.createdAt,
-    })
-    .from(tables.note);
+  return dbMethods.useNote().getAll();
 });

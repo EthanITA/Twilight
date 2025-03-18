@@ -13,6 +13,7 @@
 import { debounce } from "es-toolkit/compat";
 import Editor from "~/components/editor/index.vue";
 
+const { noteApi } = useNote();
 const noteWs = useWs(() => ws.note());
 const note = ref<NonNullable<Awaited<ReturnType<typeof api.note.get>>>>({
   title: "",
@@ -20,8 +21,10 @@ const note = ref<NonNullable<Awaited<ReturnType<typeof api.note.get>>>>({
 });
 const abortController = ref(new AbortController());
 const saveNote = debounce(
-  () => {
+  async () => {
     noteWs.send({ topic: "message", data: note.value });
+    await noteWs.waitMessage(NOTE.TOPIC.MESSAGE);
+    noteApi.refresh();
   },
   1500,
   { maxWait: 5000 },

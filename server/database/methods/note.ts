@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import { NoteInsert, Note } from "~~/server/database/schema";
 
 export const useNote = () => {
@@ -21,11 +21,14 @@ export const useNote = () => {
       updatedAt: table.updatedAt,
       createdAt: table.createdAt,
     };
-    return db.select(cols).from(table);
+    return db.select(cols).from(table).orderBy(desc(table.updatedAt));
   }
 
   async function save(id: Note["id"], note: NoteInsert) {
-    return db.update(table).set(note).where(eq(table.id, id!));
+    return db
+      .update({ ...table, updatedAt: new Date() })
+      .set(note)
+      .where(eq(table.id, id!));
   }
 
   return { get, getAll, save };
