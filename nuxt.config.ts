@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     pageTransition: { name: "page", mode: "out-in" },
   },
   compatibilityDate: "2024-04-03",
-  devtools: { enabled: true },
+  devtools: { enabled: true, telemetry: false },
   modules: ["@nuxthub/core", "@pinia/nuxt", "@nuxt/ui"],
   ssr: false,
   ui: {
