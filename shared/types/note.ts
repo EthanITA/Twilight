@@ -13,7 +13,11 @@ const abortHintSchema = z.object({
 });
 const messageSchema = z.object({
   topic: z.literal(TOPIC.MESSAGE),
-  data: z.object({ title: z.string(), content: z.string().default("") }),
+  data: z.object({
+    id: z.number(),
+    title: z.string(),
+    content: z.string().default(""),
+  }),
 });
 const schema = {
   hint: hintSchema,

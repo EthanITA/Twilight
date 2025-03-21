@@ -54,8 +54,11 @@ const handlers: Handlers = {
   },
 };
 
-const saveNote = (note: Pick<Note, "content" | "title">) => {
-  return dbMethods.useNote().save(1, note);
+const saveNote = (note: z.infer<typeof NOTE.schema.message>["data"]) => {
+  return dbMethods.useNote().save(note.id, {
+    title: note.title,
+    content: note.content,
+  });
 };
 export default defineWebSocketHandler({
   async open(peer) {
