@@ -1,5 +1,6 @@
 import { ChatOpenAI } from "@langchain/openai";
 
+// TODO use qwen1.5-7b-chat-awq of CF
 export const openai = (config: {
   model: string;
   temperature: number;

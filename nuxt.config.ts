@@ -1,8 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  future: {
-    compatibilityVersion: 4,
-  },
+  modules: ["@nuxthub/core", "@pinia/nuxt", "@nuxt/ui", "motion-v/nuxt"],
+  future: { compatibilityVersion: 4 },
   css: ["~/assets/css/main.css"],
   app: {
     head: {
@@ -19,10 +18,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true, telemetry: false },
-  modules: ["@nuxthub/core", "@pinia/nuxt", "@nuxt/ui"],
   ssr: false,
-  ui: {
-    colorMode: false,
-  },
+  ui: { colorMode: false },
   nitro: { experimental: { websocket: true } },
 });
