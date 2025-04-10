@@ -1,0 +1,19 @@
+.bubble-menu {
+    @apply shadow bg-gray-100/90 p-2 flex gap-1 rounded
+}
+
+.bubble-menu > button {
+    @apply btn btn-xs shadow-none
+}
+
+.bubble-menu > button:not([data-active]) {
+    @apply btn-ghost
+}
+
+.bubble-menu > button[data-active="false"] {
+    @apply btn-ghost hover:bg-primary-200 hover:border-primary-200 hover:text-[#812B1A]
+}
+
+.bubble-menu > button[data-active="true"] {
+    @apply bg-primary-300 border-primary-300 text-[#822C1A]
+}

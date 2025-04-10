@@ -1,0 +1,83 @@
+@import './lowlight.css';
+@import './list.css';
+@import './headings.css';
+@import './menu.css';
+
+.tiptap-title {
+  @apply text-4xl font-bold px-4 py-4;
+}
+
+.tiptap {
+  min-width: 100%;
+  @apply outline-none prose size-full px-8 min-w-full;
+}
+
+/* Basic editor styles */
+.tiptap > *:first-child {
+  margin-top: 0;
+}
+
+.tiptap p {
+  @apply my-1;
+}
+
+/* Code and preformatted text styles */
+.tiptap code {
+  background-color: mediumpurple;
+  border-radius: 0.4rem;
+  color: black;
+  font-size: 0.85rem;
+  padding: 0.25em 0.3em;
+}
+
+.tiptap pre {
+  background: black;
+  border-radius: 0.5rem;
+  color: white;
+  font-family: "JetBrainsMono", monospace;
+  margin: 1.5rem 0;
+  padding: 0.75rem 1rem;
+}
+
+.tiptap pre code {
+  background: none;
+  color: inherit;
+  font-size: 0.8rem;
+  padding: 0;
+}
+
+.tiptap blockquote > p:before, .tiptap blockquote > p:after {
+  content: '';
+}
+
+.tiptap hr {
+  border: none;
+  border-top: 1px solid dimgray;
+  margin: 2rem 0;
+}
+
+.tiptap p.is-empty::before {
+  @apply text-gray-400;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.custom-drag-handle::after {
+  align-items: center;
+  background: #0D0D0D10;
+  border-radius: 0.25rem;
+  color: #0D0D0D50;
+  content: '⠿';
+  cursor: grab;
+  display: flex;
+  font-weight: 700;
+  height: 1.25rem;
+  justify-content: center;
+  width: 1rem;
+}
+
+.autocomplete-suggestion {
+  @apply text-gray-400;
+}

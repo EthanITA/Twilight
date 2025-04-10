@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+@import "./theme/base.css";
+@import "./theme/daisy.css";
+@import "./theme/shadcn.css";
+
+@plugin '@tailwindcss/typography';

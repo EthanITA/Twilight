@@ -1,0 +1,20 @@
+@import './tailwind.css';
+@import './tiptap/index.css';
+@import "./lucide.css";
+
+html {
+  @apply font-nunito;
+}
+
+:root {
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html, #__nuxt, body {
+  @apply size-full overflow-hidden;
+}
+
