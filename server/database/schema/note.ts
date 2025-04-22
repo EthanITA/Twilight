@@ -1,4 +1,5 @@
 import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
 
 const timestamps = {
   updatedAt: timestamp(),
@@ -14,4 +15,5 @@ export const note = pgTable("note", {
 });
 
 export type Note = typeof note.$inferInsert;
-export type NoteInsert = Pick<Note, "content" | "title">;
+export type NoteI = typeof note.$inferSelect;
+export const noteSchema = createInsertSchema(note);

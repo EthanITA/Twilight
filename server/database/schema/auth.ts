@@ -5,6 +5,7 @@ import {
   timestamp,
   boolean,
 } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -21,6 +22,10 @@ export const user = pgTable("user", {
   searchType: text("search_type").notNull(),
 });
 
+export type User = typeof user.$inferSelect;
+export type UserI = typeof user.$inferInsert;
+export const userSchema = createInsertSchema(user);
+
 export const session = pgTable("session", {
   id: text("id").primaryKey(),
   expiresAt: timestamp("expires_at").notNull(),
@@ -34,6 +39,10 @@ export const session = pgTable("session", {
     .references(() => user.id, { onDelete: "cascade" }),
   impersonatedBy: text("impersonated_by"),
 });
+
+export type Session = typeof session.$inferSelect;
+export type SessionI = typeof session.$inferInsert;
+export const sessionSchema = createInsertSchema(session);
 
 export const account = pgTable("account", {
   id: text("id").primaryKey(),
@@ -53,6 +62,10 @@ export const account = pgTable("account", {
   updatedAt: timestamp("updated_at").notNull(),
 });
 
+export type Account = typeof account.$inferSelect;
+export type AccountI = typeof account.$inferInsert;
+export const accountSchema = createInsertSchema(account);
+
 export const verification = pgTable("verification", {
   id: text("id").primaryKey(),
   identifier: text("identifier").notNull(),
@@ -61,6 +74,10 @@ export const verification = pgTable("verification", {
   createdAt: timestamp("created_at"),
   updatedAt: timestamp("updated_at"),
 });
+
+export type Verification = typeof verification.$inferSelect;
+export type VerificationI = typeof verification.$inferInsert;
+export const verificationSchema = createInsertSchema(verification);
 
 export const passkey = pgTable("passkey", {
   id: text("id").primaryKey(),
@@ -76,3 +93,7 @@ export const passkey = pgTable("passkey", {
   transports: text("transports"),
   createdAt: timestamp("created_at"),
 });
+
+export type Passkey = typeof passkey.$inferSelect;
+export type PasskeyI = typeof passkey.$inferInsert;
+export const passkeySchema = createInsertSchema(passkey);

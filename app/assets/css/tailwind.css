@@ -1,6 +1,11 @@
 @import 'tailwindcss';
 @import "./theme/base.css";
 @import "./theme/daisy.css";
-@import "./theme/shadcn.css";
 
 @plugin '@tailwindcss/typography';
+
+@layer base {
+  body {
+    @apply bg-white text-base-content;
+  }
+}

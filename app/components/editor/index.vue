@@ -1,0 +1,61 @@
+<script lang="ts" setup>
+import { Editor, EditorContent } from "@tiptap/vue-3";
+import tiptapEditor from "~/const/editor";
+import { getExtensions } from "~/const/editor/extensions";
+
+const title = defineModel<string>("title", { default: "" });
+const content = defineModel<string>("content", { default: "" });
+
+const editor = ref<Editor>(tiptapEditor());
+editor.value.on("update", () => (content.value = editor.value!.getHTML()));
+
+watch(
+  content,
+  (val) => {
+    if (editor.value!.getHTML() === val) return;
+    editor.value!.commands.setContent(val, false);
+  },
+  { immediate: true },
+);
+watch(
+  title,
+  () =>
+    // prevent new lines
+    (title.value = title.value.replace(/&nbsp;/g, "").replace(/[\n\r]/g, " ")),
+  { immediate: true },
+);
+
+onUnmounted(() => {
+  editor.value.storage.suggestion;
+  editor.value!.destroy();
+});
+
+defineExpose({
+  setHint: (hint: string) => editor.value!.commands.setSuggestion(hint),
+  getHint: () => getExtensions(editor.value as Editor, "suggestion"),
+  clearHint: () => editor.value!.commands.clearSuggestion(),
+  applyHint: () => editor.value!.commands.applySuggestion(),
+  addText: (text: string) =>
+    editor.value.chain().focus().insertContent(text).run(),
+  getText: () => editor.value!.getText(),
+});
+</script>
+
+<template>
+  <div>
+    <div class="flex flex-col overflow-y-auto">
+      <atoms-content
+        v-model="title"
+        class="tiptap-title"
+        placeholder="Title"
+        tag="h1"
+        @keydown.enter.prevent="editor.commands.focus()"
+      />
+      <editor-content :editor="editor" class="flex-1" />
+      <editor-menu :editor="editor" />
+    </div>
+    <div class="h-40" />
+  </div>
+</template>
+
+<style scoped />

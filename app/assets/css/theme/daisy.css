@@ -1,26 +1,38 @@
-@plugin "daisyui/theme"{
-  name: "twilight";
-  default: true; /* set as default */
-  prefersdark: false; /* set as default dark mode (prefers-color-scheme:dark) */
-  color-scheme: light; /* color of browser-provided UI */
-
-  --primary: var(--color-primary);
-  --color-primary-content: #FFE6E1;
-  --secondary: var(--color-secondary);
-  --secondary-focus: var(--color-secondary-600);
-  --secondary-content: #F3EAFC;
-  --accent: var(--color-tertiary);
-  --accent-focus: var(--color-tertiary-600);
-  --accent-content: #E4EAFF;
-  --neutral: var(--color-primary-200);
-  --neutral-content: #812B1A;
-  --base-100: #F9FAFB;
-  --base-200: #eceff2;
-  --base-300: #d5dde2;
-  --base-content: #333E47;
-  --base-content-focus: #435362;
-  --radius-field: var(--radius-md);
+@plugin "daisyui/theme" {
+  name: "Twilight";
+  default: true;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(98% 0.003 247.858);
+  --color-base-200: oklch(92% 0.013 255.508);
+  --color-base-300: oklch(86% 0.022 252.894);
+  --color-base-content: oklch(20% 0.042 265.755);
+  --color-primary: oklch(74.703% 0.158 39.947);
+  --color-primary-content: oklch(14.94% 0.031 39.947);
+  --color-secondary: oklch(71.294% 0.166 299.844);
+  --color-secondary-content: oklch(14.258% 0.033 299.844);
+  --color-accent: oklch(72.537% 0.177 2.72);
+  --color-accent-content: oklch(14.507% 0.035 2.72);
+  --color-neutral: oklch(26% 0.019 237.69);
+  --color-neutral-content: oklch(70% 0.019 237.69);
+  --color-info: oklch(80% 0.105 251.813);
+  --color-info-content: oklch(17.111% 0.017 206.015);
+  --color-success: oklch(70% 0.233 130.85);
+  --color-success-content: oklch(17.112% 0.017 144.778);
+  --color-warning: oklch(79% 0.184 86.047);
+  --color-warning-content: oklch(17.113% 0.016 74.427);
+  --color-error: oklch(80% 0.114 19.571);
+  --color-error-content: oklch(17.102% 0.015 16.886);
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --size-selector: 0.21875rem;
+  --size-field: 0.21875rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
 }
+
 @plugin "daisyui" {
   themes: "twilight";
 }

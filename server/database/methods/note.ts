@@ -1,5 +1,5 @@
 import { eq, desc } from "drizzle-orm";
-import { NoteInsert, Note } from "~~/server/database/schema";
+import { NoteI, Note } from "~~/server/database/schema";
 
 export const useNote = () => {
   const table = tables.note;
@@ -24,7 +24,7 @@ export const useNote = () => {
     return db.select(cols).from(table).orderBy(desc(table.updatedAt));
   }
 
-  async function save(id: Note["id"], note: NoteInsert) {
+  async function save(id: Note["id"], note: NoteI) {
     return db
       .update({ ...table, updatedAt: new Date() })
       .set(note)
