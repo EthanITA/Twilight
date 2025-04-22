@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex flex-col items-center justify-center bg-primary-50/20 transition-bg"
+    class="relative flex flex-col items-center justify-center bg-secondary-50/20 transition-bg"
   >
     <div class="absolute inset-0 overflow-hidden">
       <div
@@ -28,11 +28,11 @@ withDefaults(defineProps<AuroraBackgroundProps>(), { radialGradient: true });
 .aurora-bg {
   --aurora: repeating-linear-gradient(
     100deg,
-    var(--color-primary-100) 10%,
-    var(--color-primary-200) 15%,
-    var(--color-primary-400) 20%,
-    var(--color-primary-300) 25%,
-    var(--color-primary-500) 30%
+    var(--color-secondary-100) 10%,
+    var(--color-secondary-200) 15%,
+    var(--color-secondary-400) 20%,
+    var(--color-secondary-300) 25%,
+    var(--color-secondary-500) 30%
   );
   background-image: var(--white-gradient), var(--aurora);
   background-position:

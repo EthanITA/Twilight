@@ -35,7 +35,7 @@ const cls = computed(() => card(props));
 </script>
 
 <template>
-  <div :class="cls" class="w-96 card">
+  <div :class="cls" class="card">
     <div class="card-body">
       <div v-if="$slots.header" class="card-title">
         <slot name="header" />

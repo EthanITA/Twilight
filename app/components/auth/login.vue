@@ -11,12 +11,17 @@ const { refresh: login, isPending } = useAction(async () => {
 </script>
 
 <template>
-  <Card
-    class="bg-base-100 shadow-md shadow-primary-200 border-primary-100"
-    variant="border"
-  >
+  <Card class="bg-base-100" size="lg">
     <template #header>
-      <Text class="text-primary-400" type="heading">Welcome Back!</Text>
+      <div class="gap-4 flex flex-col">
+        <Text class="text-primary-400" type="heading">Let's Login!</Text>
+        <!--
+                <Text type="body">
+                  Twilight will plan and prioritizes your day,
+                  <br />helping you to take back the hours to create, build, and live.
+                </Text>
+        -->
+      </div>
     </template>
     <template #footer>
       <ButtonGoogle :loading="isPending" @click="login" />

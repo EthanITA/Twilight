@@ -1,23 +1,24 @@
-<script lang="ts" setup>
-import AuroraBg from "~/components/inspira/aurora-bg.vue";
-</script>
+<script lang="ts" setup></script>
 
 <template>
-  <AuroraBg class="size-full border-l">
-    <div class="grid md:grid-cols-2 size-full">
-      <div class="relative flex flex-col items-center justify-center px-4">
-        <Text class="text-center font-bold text-5xl" type="title">
-          Make time for what matters.
-        </Text>
-        <div class="py-4 font-extralight text-2xl text-center">
-          Twilight’s AI plans, adapts, and prioritizes your day—giving you back
-          the hours to create, build, and live.
-        </div>
+  <div class="relative size-full">
+    <div class="grid sm:grid-cols-2 size-full">
+      <div
+        class="col-span-1 flex flex-col items-center justify-center bg-base-100"
+      >
+        <AuthLogin class="w-full" />
       </div>
-      <div class="flex flex-col items-center justify-center px-4 py-8">
-        <AuthLogin />
+      <div class="bg-primary-100/80 flex flex-col justify-between p-8">
+        <Text class="text-primary" type="subtitle" variant="bold">
+          Twilight
+        </Text>
+        <Text class="text-primary-content" type="quote">
+          As we all know, we tend to fix things rather than prevent them.
+          <br />
+          <span class="font-bold">But it's time to change that.</span>
+        </Text>
       </div>
     </div>
-  </AuroraBg>
+  </div>
   <slot />
 </template>
