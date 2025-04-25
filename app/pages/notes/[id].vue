@@ -1,17 +1,9 @@
 <template>
-  <Editor
-    v-if="note"
-    ref="editor"
-    v-model:content="note.content"
-    v-model:title="note.title"
-    class="overflow-y-auto size-full bg-gray-50"
-    name="editor"
-  />
+  <div>WIP</div>
 </template>
 
 <script lang="ts" setup>
 import { debounce } from "es-toolkit/compat";
-import Editor from "~/components/editor/index.vue";
 import { z } from "zod";
 
 const { noteApi } = useNote();

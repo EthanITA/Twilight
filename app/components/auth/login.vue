@@ -11,10 +11,10 @@ const { refresh: login, isPending } = useAction(async () => {
 </script>
 
 <template>
-  <Card class="bg-base-100" size="lg">
+  <Card size="lg">
     <template #header>
       <div class="gap-4 flex flex-col">
-        <Text class="text-primary-400" type="heading">Let's Login!</Text>
+        <Text type="heading">Let's Login!</Text>
         <!--
                 <Text type="body">
                   Twilight will plan and prioritizes your day,
